@@ -19,7 +19,7 @@ geminiPassword = ''             # default = ''
 ## Setup Observer details
 
 gatech = ephem.Observer()
-gatech.lat, gatech.lon = 51.4769, 0.0005            # Change this to match your observing location
+gatech.lat, gatech.lon = 51.4769, 0.0005            # Change this to match your observing location - (51.4769, 0.0005 == Greenwich Obs., London, UK)
 gatech.date = datetime.utcnow().strftime('%Y/%m/%d %H:%M:%S')           # Defaults to utcnow() - unlikely this needs to change unless you want future/past positions
 
 
