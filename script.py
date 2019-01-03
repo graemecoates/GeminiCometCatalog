@@ -5,16 +5,24 @@ def downloadFile(url,file_name):
     with urllib.request.urlopen(url) as response, open(file_name, 'wb') as out_file:
         shutil.copyfileobj(response, out_file)
 
+        
+## Parameters
+        
 cometURL = 'https://minorplanetcenter.net/iau/Ephemerides/Comets/Soft03Cmt.txt'
 cometLocalFile = 'Soft03Cmt.txt'
 cometOutputFile = 'comets.guc'
-gatech = ephem.Observer()
-gatech.lat, gatech.lon = 51.4769, 0.0005            # Change this to match your observing location
-gatech.date = datetime.utcnow().strftime('%Y/%m/%d %H:%M:%S')
 geminiIPAddr = '192.168.10.52'              # Change this to point at your Gemini 2 Mount
 geminiFTPPort = 21              # Unlikely this needs to change unless you're doing some odd NAT type stuff...
 geminiUsername = 'admin'            # default = 'admin'
 geminiPassword = ''             # default = ''
+
+## Setup Observer details
+
+gatech = ephem.Observer()
+gatech.lat, gatech.lon = 51.4769, 0.0005            # Change this to match your observing location
+gatech.date = datetime.utcnow().strftime('%Y/%m/%d %H:%M:%S')
+
+
 
 ## Shift out any old files
 
