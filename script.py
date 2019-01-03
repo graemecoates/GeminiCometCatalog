@@ -9,12 +9,14 @@ cometURL = 'https://minorplanetcenter.net/iau/Ephemerides/Comets/Soft03Cmt.txt'
 cometLocalFile = 'Soft03Cmt.txt'
 cometOutputFile = 'comets.guc'
 gatech = ephem.Observer()
-gatech.lat, gatech.lon = 51.4769, 0.0005
+gatech.lat, gatech.lon = 51.4769, 0.0005            # Change this to match your observing location
 gatech.date = datetime.utcnow().strftime('%Y/%m/%d %H:%M:%S')
-geminiIPAddr = '192.168.10.52'
-geminiFTPPort = 21
-geminiUsername = 'admin'
-geminiPassword = ''
+geminiIPAddr = '192.168.10.52'              # Change this to point at your Gemini 2 Mount
+geminiFTPPort = 21              # Unlikely this needs to change unless you're doing some odd NAT type stuff...
+geminiUsername = 'admin'            # default = 'admin'
+geminiPassword = ''             # default = ''
+
+## Shift out any old files
 
 if os.path.exists(cometOutputFile):
     print('Removing old '+str(cometOutputFile))
@@ -23,6 +25,8 @@ if os.path.exists(cometLocalFile):
     print('Removing old '+str(cometLocalFile))
     os.remove(cometLocalFile)
 downloadFile(cometURL, cometLocalFile)
+
+## Calculate geocentric positions for now using elements
 
 with open(cometOutputFile,"a") as o:
     print('Calculate positions from elements')
@@ -38,6 +42,9 @@ with open(cometOutputFile,"a") as o:
             #print('%s %s %s' % (yh.name, yh.ra, yh.dec))
 f.close()
 o.close()
+
+
+## Upload via ftp 
 
 print("Open FTP")
 ftpSession = ftplib.FTP()
