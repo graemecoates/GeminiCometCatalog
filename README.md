@@ -16,7 +16,7 @@ urllib.request
 datetime
 ```
 
-The target machine requires access to the internet to download the comet elements from the Minor Planet Centre at: https://minorplanetcenter.net/iau/Ephemerides/Comets/Soft03Cmt.txt. This machine also needs to be able to ftp to the target Gemini 2 controller. Note that this script does not (yet) support catalogue upload via serial/USB. 
+The target machine requires access to the internet to download the comet elements (in xephem format suitable for pyephem) from the Minor Planet Centre, at: https://minorplanetcenter.net/iau/Ephemerides/Comets/Soft03Cmt.txt. This machine also needs to be able to ftp to the target Gemini 2 controller. Note that this script does not (yet) support catalogue upload via serial/USB. 
 
 ### Installing
 
